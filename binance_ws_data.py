@@ -29,8 +29,7 @@ class BinanceWebSocketClient:
 
     def store_data_in_mysql(self, msg):
         msg = json.loads(msg)
-          
-        if (msg['e'] == 'kline'):
+        if (msg.get('e') == 'kline'):
             symbol = msg['s']
             kline = msg['k']
             #只处理完结的K线
@@ -52,7 +51,7 @@ class BinanceWebSocketClient:
             self.db_cursor.execute(sql, val)
             self.db_connection.commit()
 
-        elif (msg['e'] == 'forceOrder'):
+        elif (msg.get('e') == 'forceOrder'):
             data = msg['o']
             symbol = data['s']
             side = data['S']
