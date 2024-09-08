@@ -6,7 +6,7 @@ from binance.websocket.um_futures.websocket_client import UMFuturesWebsocketClie
 import config
 import time
 
-config_logging(logging, logging.DEBUG)
+config_logging(logging, logging.ERROR)
 
 class BinanceWebSocketClient:
     def __init__(self):
